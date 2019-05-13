@@ -192,7 +192,7 @@ $(function () {
     // Validate the data while the user is typing
     $name.on('change, blur', validateName);
     $email.on('change, blur', validateEmail);
-    $selectJob.on('change', validateJobRole);
+    $selectJob.on('change, blur', validateJobRole);
     $otherJobTitle.on('change, blur', validateJobRole);
     $activities.on('click', validateActivities);
     $cardNumber.on('change, blur', validateCardNumber);
