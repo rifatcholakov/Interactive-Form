@@ -208,7 +208,6 @@ $(function () {
         validateName();
         validateEmail();
         validateJobRole();
-        validateTshirtDesign();
         validateActivities();
         validatePayment();
 
@@ -315,6 +314,8 @@ $(function () {
             validateCardNumber();
             validateZip();
             validateCvv();
+        } else {
+            isFormValid = true;
         }
     }
 
@@ -331,24 +332,32 @@ $(function () {
     }
 
     function validateElement(selector, regex, emptyMessage, invalidMessage, labelText) {
-        const $element = $(selector);
-        const $elementLabel = $element.prev();
-        let isDataValid = regex.test($element.val());
-        
-        if($element.val() === '') {
-            $elementLabel.text(emptyMessage).css('color', err.color);
-            $element.css('border', `2px solid ${err.color}`);
+        const $payment = $('#payment');
+        const paymentMethod = $payment.val();
 
-            isFormValid = false;
-        } else if(!isDataValid) {
-            $elementLabel.text(invalidMessage).css('color', err.color);
-            $element.css('border', `2px solid ${err.color}`);
+        if(paymentMethod === 'credit card') {
 
-            isFormValid = false;
+            const $element = $(selector);
+            const $elementLabel = $element.prev();
+            let isDataValid = regex.test($element.val());
+            
+            if($element.val() === '') {
+                $elementLabel.text(emptyMessage).css('color', err.color);
+                $element.css('border', `2px solid ${err.color}`);
+
+                isFormValid = false;
+            } else if(!isDataValid) {
+                $elementLabel.text(invalidMessage).css('color', err.color);
+                $element.css('border', `2px solid ${err.color}`);
+
+                isFormValid = false;
+            } else {
+                $elementLabel.text(labelText).css('color', valid.color);
+                $element.css('border', `2px solid ${valid.borderColor}`);
+
+                isFormValid = true;
+            }
         } else {
-            $elementLabel.text(labelText).css('color', valid.color);
-            $element.css('border', `2px solid ${valid.borderColor}`);
-
             isFormValid = true;
         }
     }
