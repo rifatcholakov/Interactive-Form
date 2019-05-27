@@ -1,5 +1,5 @@
 # Interactive Form
-Transforming a basic web form in an engaging, interactive, and easy to use. 
+As developers we create forms to collect information from users for nearly every website and application we build. For this project, I've used my skills to enhance a form so that it’s engaging, interactive, and easy to use.
 <br/>
 <br/>
 <img src="https://i.imgur.com/wocPK0K.png" />
